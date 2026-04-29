@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.7
-# Base compartida BJJ: CUDA + Python + deps comunes (torch, transformers, fastapi...)
+# Base compartida OSSFlow: CUDA + Python + deps comunes (torch, transformers, fastapi...)
 # Build una vez:
-#   docker build -t bjj-base:latest -f python/bjj-base/Dockerfile python/
+#   docker build -t ossflow-base:latest -f python/ossflow-base/Dockerfile python/
 # Reutilizada por chapter-splitter, subtitle-generator, dubbing-generator.
 FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04
 
@@ -25,7 +25,7 @@ ENV PATH="/opt/venv/bin:$PATH" VIRTUAL_ENV=/opt/venv
 # Deps comunes pesadas — una sola vez para los 3 backends
 # Usamos --extra-index-url con variante cu124 — evita que torch traiga sus
 # propias copias de las libs CUDA ya presentes en el base image.
-RUN --mount=type=cache,target=/root/.cache/pip,id=bjj-pip,sharing=locked \
+RUN --mount=type=cache,target=/root/.cache/pip,id=ossflow-pip,sharing=locked \
     pip install --upgrade pip setuptools wheel \
  && pip install --extra-index-url https://download.pytorch.org/whl/cu124 \
         "torch==2.5.1" "torchaudio==2.5.1" \
