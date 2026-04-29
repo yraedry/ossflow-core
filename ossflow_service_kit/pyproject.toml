@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bjj-service-kit"
+version = "0.1.0"
+description = "Shared FastAPI service kit for BJJ processor backends"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.27",
+    "sse-starlette>=2.0",
+    "pydantic>=2.5",
+    "sqlalchemy>=2.0",
+    "alembic>=1.13",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=7.4",
+    "pytest-asyncio>=0.23",
+    "httpx>=0.27",
+]
+
+# The package files live directly in this directory (flat layout: the
+# directory itself IS the package). We expose it as a single package by
+# mapping the package name to "." via package-dir, so setuptools does not
+# need to look outside the project root (which recent setuptools/pip
+# editable builds refuse to do).
+[tool.setuptools]
+packages = ["bjj_service_kit", "bjj_service_kit.db", "bjj_service_kit.db.migrations", "bjj_service_kit.db.migrations.versions"]
+
+[tool.setuptools.package-dir]
+bjj_service_kit = "."
+"bjj_service_kit.db" = "db"
+"bjj_service_kit.db.migrations" = "db/migrations"
+"bjj_service_kit.db.migrations.versions" = "db/migrations/versions"
