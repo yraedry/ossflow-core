@@ -1,4 +1,4 @@
-"""Alembic env — uses bjj_service_kit engine + models."""
+"""Alembic env — uses ossflow_service_kit engine + models."""
 
 from __future__ import annotations
 
@@ -6,8 +6,8 @@ from logging.config import fileConfig
 
 from alembic import context
 
-from bjj_service_kit.db.engine import get_engine
-from bjj_service_kit.db.models import Base
+from ossflow_service_kit.db.engine import get_engine
+from ossflow_service_kit.db.models import Base
 
 config = context.config
 if config.config_file_name:

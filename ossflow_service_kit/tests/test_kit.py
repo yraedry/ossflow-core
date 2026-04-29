@@ -1,4 +1,4 @@
-"""Tests for bjj_service_kit: factory, runner, events, security."""
+"""Tests for ossflow_service_kit: factory, runner, events, security."""
 
 from __future__ import annotations
 
@@ -7,8 +7,8 @@ import json
 import pytest
 from fastapi.testclient import TestClient
 
-from bjj_service_kit import BaseRunner, JobEvent, RunRequest, create_app
-from bjj_service_kit.runner import validate_input_path
+from ossflow_service_kit import BaseRunner, JobEvent, RunRequest, create_app
+from ossflow_service_kit.runner import validate_input_path
 
 
 # --- validate_input_path --------------------------------------------------

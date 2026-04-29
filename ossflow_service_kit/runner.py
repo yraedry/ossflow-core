@@ -94,7 +94,7 @@ class BaseRunner:
 
     task_fn: TaskFn
     registry: JobRegistry = field(default_factory=JobRegistry)
-    logger: logging.Logger = field(default_factory=lambda: logging.getLogger("bjj_service_kit.runner"))
+    logger: logging.Logger = field(default_factory=lambda: logging.getLogger("ossflow_service_kit.runner"))
 
     def submit(self, request: RunRequest) -> str:
         # Security: validate path up-front. Raises ValueError handled by FastAPI layer.

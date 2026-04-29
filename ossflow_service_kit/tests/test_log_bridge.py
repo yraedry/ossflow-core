@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import logging
 
-from bjj_service_kit import EmitLogHandler, emit_logs, install_emit_handler
-from bjj_service_kit.schemas import JobEvent
+from ossflow_service_kit import EmitLogHandler, emit_logs, install_emit_handler
+from ossflow_service_kit.schemas import JobEvent
 
 
 def _collector():

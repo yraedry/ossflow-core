@@ -1,4 +1,4 @@
-"""Ensure the parent directory is on sys.path so `bjj_service_kit` is importable."""
+"""Ensure the parent directory is on sys.path so `ossflow_service_kit` is importable."""
 
 from __future__ import annotations
 

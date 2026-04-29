@@ -9,10 +9,10 @@ from pathlib import Path
 import pytest
 from sqlalchemy import text
 
-from bjj_service_kit.db import engine as engine_mod
-from bjj_service_kit.db import session as session_mod
-from bjj_service_kit.db.engine import get_engine, init_db
-from bjj_service_kit.db.models import (
+from ossflow_service_kit.db import engine as engine_mod
+from ossflow_service_kit.db import session as session_mod
+from ossflow_service_kit.db.engine import get_engine, init_db
+from ossflow_service_kit.db.models import (
     BackgroundJob,
     LibraryChapter,
     LibraryItem,
@@ -44,7 +44,7 @@ def test_wal_and_fk_pragmas(tmp_db):
 
 
 def test_settings_crud(tmp_db):
-    from bjj_service_kit.db.session import session_scope
+    from ossflow_service_kit.db.session import session_scope
 
     with session_scope() as s:
         s.add(Setting(key="foo", value='{"a":1}'))
@@ -54,7 +54,7 @@ def test_settings_crud(tmp_db):
 
 
 def test_library_cascade_delete(tmp_db):
-    from bjj_service_kit.db.session import session_scope
+    from ossflow_service_kit.db.session import session_scope
 
     with session_scope() as s:
         item = LibraryItem(path="/v/a.mkv", title="A")
@@ -67,7 +67,7 @@ def test_library_cascade_delete(tmp_db):
 
 
 def test_pipeline_with_steps(tmp_db):
-    from bjj_service_kit.db.session import session_scope
+    from ossflow_service_kit.db.session import session_scope
 
     with session_scope() as s:
         p = Pipeline(id="pipe1", status="running", input_path="/x.mkv",
@@ -81,7 +81,7 @@ def test_pipeline_with_steps(tmp_db):
 
 
 def test_background_job_roundtrip(tmp_db):
-    from bjj_service_kit.db.session import session_scope
+    from ossflow_service_kit.db.session import session_scope
 
     with session_scope() as s:
         s.add(BackgroundJob(id="j1", type="scan", status="pending"))
